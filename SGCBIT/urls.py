@@ -9,11 +9,10 @@ from apps.administrativo import views
 from apps.estructura.urls import*
 
 urlpatterns = [
-	#path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls'),name='login'),
     path('sgcbit',Index, name='index'),
     path('sgcbit/', include('apps.administrativo.urls')),
     path('sgcbit/', include('apps.tecnico.urls')),
     path('sgcbit/', include('apps.estructura.urls'))
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
