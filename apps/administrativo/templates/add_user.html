@@ -1,0 +1,14 @@
+{%extends "modal_base.html"%}
+{%block title%}SGCBIT|Registro de usuario{%endblock title%}
+{%block validar%}
+<form role="form" class="row g-2" id="form" action="{%url 'add-user'%}" method="post"> 
+{%endblock validar%}
+
+{%block titulo%}REGISTRAR USUARIO{%endblock titulo%}
+
+{%block contenido%}
+{%csrf_token%}
+	{{form.as_p}}
+{%endblock contenido%}
+
+{%block corte%}</form>{%endblock corte%}

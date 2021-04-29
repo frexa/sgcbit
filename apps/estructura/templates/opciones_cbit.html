@@ -1,0 +1,23 @@
+{%load static%}
+<div class="dropdown">
+<button class="btn btn-outline-info dropdown-toggle" type="button" id="desplegable" data-toggle="dropdown" aria-expanded="false">
+	Opciones
+</button>
+<div class="dropdown-menu" aria-labelledby="desplegable">
+<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+
+<a class="btn btn-warning btn-sm" onclick="abrir_modal('{% url 'add-cbit'%}')"><img src="{%static 'images/documento.png'%}" width="40" height="30" title="Agregar" class="img"></a>
+					
+<a class="btn btn-sm btn-info" onclick="abrir_modal('{{cbit.get_url_update}}')"><img src="{%static 'images/lapiz.png'%}" width="40" height="30" title="Modificar" class="img"></a>
+
+<a class="btn btn-sm btn-danger" onclick="abrir_modal('{{cbit.get_url_delete}}')" role="button"><img src="{%static 'images/eliminar.png'%}" width="40" height="30" title="Eliminar" class="img"></a>
+
+<a class="btn btn-sm btn-primary" href="{%url 'list-equipo' cbit.pk %}"><img src="{%static 'images/Tecnico.png'%}" title="Tecnico" width="40px" height="30px"></a>
+
+<a class="btn btn-sm btn-ligth" href="{%url 'report-equipo-malo' cbit.pk %}"><img src="{%static 'images/equipo_malo.png'%}" title="Equipos dañados" width="40px" height="30px"></a>
+
+
+<a class="btn btn-sm btn-warning" href="{%url 'report-equipo' cbit.pk%}"><img src="{%static 'images/report.png'%}" title="Reporte" width="40px" height="30px"></a>
+</div>
+</div>
+</div>

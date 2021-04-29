@@ -1,0 +1,29 @@
+{%extends "index4.html"%}
+{%block title%}SGCBIT|CBIT´S{%endblock title%}
+{%load static%}
+{%block content%}
+<h4 style="text-align:left;">Lista de cbit de la region barloventeña</h4><br>
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Tutor a cargo</th>
+			</tr>
+		</thead>
+		<tbody>
+		{%for cbit in cbits%}
+			<tr>
+				<td>{{cbit.nombre}}</td>
+				<td>{{cbit.empleado}}</td>
+				<td>
+				{%include "opciones_cbit.html"%}
+				</td>
+			</tr>
+		{%empty%}
+		<div><p class="col bg-warning">No se ha registrado ningun cbit aun</p><p><a href="{%url 'add-cbit'%}" class="link">Has Click Aquí para agregar uno</a></p></div>
+		{%endfor%}
+		</tbody>
+	</table>
+</div>
+{%endblock%}

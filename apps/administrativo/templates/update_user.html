@@ -1,0 +1,14 @@
+{%extends "modal_base.html"%}
+{%block title%}SGCBIT|Modificar usuario{%endblock title%}
+{%block validar%}
+<form role="form" class="row g-2" id="form" action="{%url 'update-user' user.pk%}" method="post"> 
+{%endblock validar%}
+
+{%block titulo%}ACTUALIZAR USUARIO{%endblock titulo%}
+
+{%block contenido%}
+{%csrf_token%}
+	{{form.as_ul}}
+{%endblock contenido%}
+
+{%block corte%}</form>{%endblock corte%}

@@ -1,0 +1,21 @@
+{%load static%}
+<div class="dropdown">
+	<button class="btn btn-outline-info dropdown-toggle" type="button" id="menu" data-toggle="dropdown" aria-expanded="false">
+		Opciones
+	</button>
+
+<div class="dropdown-menu" aria-labelledby="menu">
+
+<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+<a onclick="abrir_modal('{%url 'add-empleado'%}')" class="btn bg-warning"><img src="{%static 'images/documento.png'%}" width="40" height="30" title="Agregar" class="img"></a>
+		
+<a onclick="abrir_modal('{%url 'update-empleado' empleados.pk%}')" class="btn bg-info"><img src="{%static 'images/lapiz.png'%}" width="40" height="30" title="Modificar" class="img"></a>
+
+<a class="btn bg-danger" onclick="abrir_modal('{{empleados.get_url_delete}}')" role="button"><img src="{%static 'images/eliminar.png'%}" width="40" height="30" title="Eliminar" class="img"></a>
+
+<a class="btn bg-success" href="{%url 'list-asistencia' empleados.pk%}"><img src="{%static 'images/asistencia.png'%}" width="40" height="30" title="Asistencia" class="img"></a>
+
+<a  class="btn bg-primary" href="{%url 'report-asistencia' empleados.pk%}"><img src="{%static 'images/report.png'%}" width="40" height="30" title="Reporte" class="img"></a>
+</div>
+</div>
+</div>

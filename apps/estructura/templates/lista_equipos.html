@@ -1,0 +1,39 @@
+{%extends "index4.html"%}
+{%block title%}SGCBIT|Equipos{%endblock title%}
+{%load static%}
+{%block content%}
+<h5 class="col-auto bg-warning" style="text-align: left;">Equipos pertenecientes al {{cbit}}</h5>
+<p><caption>Equipos</caption></p>
+<table class="table table-striped table-hover table-responsive">
+			<thead>
+				<tr>
+					<th>Serial</th>
+					<th>Modelo</th>
+					<th>Marca</th>
+					<th>Descripcion</th>
+					<th>Estado de uso</th>
+					<th>Estado fisico</th>
+					<th class="all"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{%for equipos in page_obj%}
+				<tr>
+					<td>{{equipos.serial}}</td>
+					<td>{{equipos.modelo}}</td>
+					<td>{{equipos.marca}}</td>
+					<td>{{equipos.descripcion}}</td>
+					<td>{{equipos.estado_uso}}</td>
+					<td>{{equipos.estado_fisico}}</td>
+					<td>
+						{%include "opciones_equipos.html"%}
+					</td>
+				</tr>
+				{%empty%}
+				<p>
+					<ol class="col bg-warning">No se ha registrado ningun equipo aun</ol><a class="link" href="{%url 'add-equipo'%}">Has clik aqui para agregar uno.</a>
+				</p>
+				{%endfor%}
+			</tbody>
+		</table>
+{%endblock%}

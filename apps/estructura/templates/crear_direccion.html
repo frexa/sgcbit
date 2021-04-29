@@ -1,0 +1,52 @@
+{%extends "modal_base.html"%}
+{%block title%}SGCBIT|Registrar dirección{%endblock title%}
+{%block validar%}
+{%if direccion%}
+<form role="form" class="row g-2" method="post" action="{{direccion.get_absolute_url}}">
+{%else%}
+<form role="form" class="row g-2" method="post" action="{%url 'add-direccion'%}">
+{%endif%}
+{%endblock validar%}
+
+{%block titulo%}
+{%if direccion%}ACTUALIZAR DIRECCIÓN{%else%}REGISTRAR DIRECCIÓN{%endif%}
+{%endblock titulo%}
+
+{%block contenido%}
+{%csrf_token%}
+<div class="col-md-11">
+<label class="form-label" for="{{form.estado.id_for_label}}">Estado: </label>
+	{{form.estado}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.municipio.id_for_label}}">Municipio: </label>
+	{{form.municipio}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.parroquia.id_for_label}}">Parroquia: </label>
+	{{form.parroquia}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.comuna.id_for_label}}">Comuna: </label>
+	{{form.comuna}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.avenida.id_for_label}}">Avenida: </label>
+	{{form.avenida}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.sector.id_for_label}}">Setor: </label>
+	{{form.sector}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.punto_referencia.id_for_label}}">Punto de referencia: </label>
+	{{form.punto_referencia}}
+</div>
+{%endblock contenido%}
+{%block corte%}</form>{%endblock corte%}

@@ -1,0 +1,47 @@
+{%extends "modal_base.html"%}
+{%block title%}SGCBIT|Registrar empleado{%endblock title%}
+{%block validar%}
+{%if empleado%}
+<form role="form" class="row g-2" id="form" action="{{empleado.get_url_update}}" method="post"> 
+{%else%}
+<form role="form" class="row g-2" id="form" action="{%url 'add-empleado'%}" method="post"> 
+{%endif%}
+{%endblock validar%}
+
+{%block titulo%}{% if empleado %}ACTUALIZAR EMPLEADO{%else%}
+REGISTRAR EMPLEADO{%endif%}
+{%endblock titulo%}
+
+{%block contenido%}
+{%csrf_token%}
+<div class="col-md-11">
+	<label class="form-label" for="{{form.rol.id_for_label}}">Rol: </label>
+	{{form.rol}}
+</div>
+
+<div class="col-md-11">
+	<label class="form-label" for="{{form.cedula.id_for_label}}">Cédula: </label>
+	{{form.cedula}}
+</div>
+		
+<div class="col-md-11">
+	<label class="form-label" for="{{form.nombre.id_for_label}}">Nombre: </label>
+	{{form.nombre}}
+</div>
+		
+<div class="col-md-11">
+	<label class="form-label" for="{{form.apellido.id_for_label}}">Apellido: </label>
+	{{form.apellido}}
+</div>
+		
+<div class="col-md-11">
+	<label class="form-label" for="{{form.correo.id_for_label}}">Cerreo: </label>
+	{{form.correo}}
+</div>
+		
+<div class="col-md-11">
+	<label class="form-label" for="{{form.celular.id_for_label}}">Celular: </label>
+	{{form.celular}}
+</div>
+{%endblock contenido%}
+{%block corte%}</form>{%endblock corte%}

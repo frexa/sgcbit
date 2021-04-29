@@ -1,0 +1,75 @@
+{%extends "index4.html"%}
+{%load static%}
+{%block title%}SGCBIT|Asistencias{%endblock title%}
+{%block content%}
+<p><h6 class="col-auto" style="text-align: left;">Control de asistencias e inasistencias de
+{{empleado}}</h6></p>
+<div class="table-responsive">
+		<table class="table table-striped table-hover">
+
+			<thead>
+				<tr>
+					<th>Fecha</th>
+					<th>Día</th>
+					<th>Hora de inicio</th>
+					<th>Hora de salida</th>
+					<th>Actividad</th>
+					<th>Observación</th>
+					<th class="all">Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for asistencias in page_obj %}
+				<tr>
+					<td>{{asistencias.fecha}}</td>
+					<td>{{asistencias.dia}}</td>
+					<td>{{asistencias.hora_entrada}} AM</td>
+					<td>{{asistencias.hora_salida}} PM</td>
+					<td>{{asistencias.actividad}}</td>
+					<td>{%if asistencias.observacion%}{{asistencias.observacion}}{%endif%}</td>
+					<td>
+						{%include "opciones_asistencia.html"%}
+					</td>
+				</tr>
+				{%empty%}
+<p class="col col-md-4 bg-warning">No se ha registrado ninguna asistencia aun</p>
+<p><a onclick="abrir_modal('{%url 'add-asistencia'%}')" class="link">Has Click Aquí para agregar una</a>
+</p>
+{%endfor%}
+			</tbody>
+		</table>
+</div>
+
+<p><caption>Inasistencias</caption></p>
+<div class="table-responsive">
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+		<th>Fecha</th>
+		<th>Día</th>
+		<th>Motivo</th>
+		<th>Justificativo</th>
+		<th class="all">Opciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%for inasistencias in inasistencias%}
+			<tr>
+				<td>{{inasistencias.fecha}}</td>
+				<td>{{inasistencias.dia}}</td>
+				<td>{{inasistencias.motivo}}</td>
+				<td>{{inasistencias.justificativo}}</td>
+			<td>
+				{%include "opciones_inasistencias.html"%}
+			</td>
+			</tr>
+{%empty%}
+<p class="col col-md-4 bg-warning">No se ha registrado ninguna inasistencia aun</p>
+<p>
+<a onclick="abrir_modal('{%url 'add-inasistencia'%}')" href="#" class="link">Has Click Aquí para agregar una</a>
+</p>
+{%endfor%}
+</tbody>
+</table>
+</div>
+{%endblock content%}

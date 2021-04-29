@@ -1,0 +1,15 @@
+{%load static%}
+<div class="dropdown">
+<button class="btn btn-outline-info dropdown-toggle" type="button" id="desplegable" data-toggle="dropdown" aria-expanded="false">
+	Opciones
+</button>
+<div class="dropdown-menu" aria-labelledby="desplegable">
+<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+	<a class="btn btn-warning btn-sm" href="{% url 'add-equipo'%}"><img src="{%static 'images/documento.png'%}" width="40" height="30" title="Agregar" class="img"></a>
+					
+	<a class="btn btn-primary btn-sm" href="{{equipos.get_url_update}}"><img src="{%static 'images/lapiz.png'%}" width="40" height="30" title="Modificar" class="img"></a>
+
+	<a class="btn btn-danger btn-sm" href="{{equipos.get_url_delete}}" role="button"><img src="{%static 'images/eliminar.png'%}" width="40" height="30" title="Eliminar" class="img"></a>
+</div>
+</div>
+</div>

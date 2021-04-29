@@ -1,0 +1,18 @@
+{%extends "modal_base.html"%}
+{%block title%}SGCBIT|Eliminar empleado{%endblock title%}
+{%block validar%}
+<form role="form" class="row g-2" id="form" action="{{empleado.get_url_delete}}" method="post"> 
+{%endblock validar%}
+
+{%block titulo%}ELIMINAR EMPLEADO{%endblock titulo%}
+
+{%block contenido%}
+	<p>¿Esta seguro de eliminar la empleado {{empleado}}?</p>
+	{%csrf_token%}
+	<input type="submit" value="Si eliminar">
+{%endblock contenido%}
+
+{%block pie%}{%endblock pie%}
+
+{%block corte%}</form>{%endblock corte%}
+	

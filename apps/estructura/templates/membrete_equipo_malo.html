@@ -1,0 +1,10 @@
+<div class="col" style="text-align: center;">
+	<h6>NOMBRE Y APELLIDO DEL COORDINADOR ZONAL: HAROLD LONGA.</h6><p>
+	<h6>UBICACIÓN GEOGRÁFICA DE LA COORDINACIÓN ZONAL: ESTADO MIRANDA, MUNICIPIO ACEVEDO CAUCAGUA</h6><p>
+	<h6>NOMBRE DEL CENTRO DE INFORMATICA Y TELEMATICA: {{equipos}}</h6><p>
+	<h6>UBICACIÓN GEOGRAFICA DEL CENTRO DE INFORMÁTICA Y TELEMATICA (CBIT):ESTADO {{equipos.plantel.direccion.estado}}, MUNICIPIO {{equipos.plantel.direccion.municipio}}, PARROQUIA {{equipos.plantel.direccion.parroquia}}{%if equipos.plantel.direccion.avenida%}, AVENIDA {{equipos.plantel.direccion.avenida}}{%else%}{%endif%}, SECTOR {{equipos.plantel.direccion.sector}}{%if equipos.plantel.direccion.punto_referencia%} {{equipos.plantel.direccion.punto_referencia}}{%else%}{%endif%}
+	{%if equipos.plantel.direccion.calle%}, CALLE {{equipos.plantel.direccion.calle}}{%else%}{%endif%}
+	 UBICADO EN EL PLANTEL {%if equipos.plantel.nombre_circuito%}{{equipos.plantel.nombre_circuito}}{%else%}{%endif%}</h6>
+
+	 <p><h6>RESPONSABLE PATRIMONIAL DEL MANTENIMIENTO, CONSERVACIÓN Y PROTECCIÓN DE LOS BIENES DEL CBIT: {{equipos.empleado}} CI: {{equipos.empleado.cedula}}</h6></p>
+</div>

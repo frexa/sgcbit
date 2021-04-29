@@ -1,0 +1,77 @@
+{%extends "modal_base.html"%}
+{%block title%}SGCBIT|Registrar plantel{%endblock title%}
+{%block validar%}
+{%if plantel%}
+<form role="form" class="row g-2" method="post" action="{{plantel.get_url_update}}">
+{%else%}
+<form role="form" class="row g-2" method="post" action="{%url 'add-plantel'%}">
+{%endif%}
+{%endblock validar%}
+
+{%block titulo%}
+{%if plantel%}ACTUALIZAR PLANTEL{%else%}REGISTRAR PLANTEL{%endif%}
+{%endblock titulo%}
+
+{%block contenido%}
+{%csrf_token%}
+<div class="col-md-11">
+<label class="form-label" for="{{form.direccion.id_for_label}}">Dirección: </label>
+	{{form.direccion}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.empleado.id_for_label}}">Director: </label>
+	{{form.empleado}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.codigo_DEA.id_for_label}}">Código DEA: </label>
+	{{form.codigo_DEA}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.matricula_est.id_for_label}}">Matricula: </label>
+	{{form.matricula_est}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.docentes.id_for_label}}">N°Docentes: </label>
+	{{form.docentes}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.nivel_academico.id_for_label}}">Nivel: </label>
+	{{form.nivel_academico}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.dependencia.id_for_label}}">Dependencia: </label>
+	{{form.dependencia}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.direccion.id_for_label}}">Dirección: </label>
+	{{form.direccion}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.telefono.id_for_label}}">Telefono: </label>
+	{{form.telefono}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.nombre_circuito.id_for_label}}">Nombre del circuito: </label>
+	{{form.nombre_circuito}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.anno_fundacion.id_for_label}}">Año de fundación: </label>
+	{{form.anno_fundacion}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.cantidad_aulas.id_for_label}}">Cantidad de aulas: </label>
+	{{form.cantidad_aulas}}
+</div>
+{%endblock contenido%}
+{%block corte%}</form>{%endblock corte%}

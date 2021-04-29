@@ -1,0 +1,43 @@
+{%extends "modal_base.html"%}
+{%block title%}SGCBIT|Registrar inasistencia{%endblock title%}
+{%block validar%}
+{%if inasistencia%}
+<form role="form" class="row g-2" id="form" action="{{inasistencia.get_url_update}}" method="post" enctype="multipart/form-data"> 
+{%else%}
+<form role="form" class="row g-2" id="form" action="{%url 'add-inasistencia'%}" method="post" enctype="multipart/form-data"> 
+{%endif%}
+{%endblock validar%}
+
+{%block titulo%}
+	{% if inasistencia %}ACTUALIZAR INASISTENCIA{%else%}REGISTRAR INASISTENCIA{%endif%}
+{%endblock titulo%}
+
+{%block contenido%}
+{%csrf_token%}
+<div class="col-md-11">
+	<label class="form-label" for="form.empleado.id_for_label">Empleado: </label>
+		{{form.empleado}}
+</div>
+
+<div class="col-md-11">
+	<label class="form-label" for="form.fecha.id_for_label">Fecha: </label>
+	<div class="input-group date" id="fecha" data-target-input="nearest">
+			{{form.fecha}}
+		<div class="input-group-append" data-target="#fecha" data-toggle="datepicker">
+			<div class="input-group-text">
+				<i class="fa fa-calendar"></i>
+			</div>
+		</div>
+	</div>
+</div>
+		
+<div class="col-md-11">
+	<label class="form-label" for="form.justificativo.id_for_label">Justificativo: </label>{{form.justificativo}}
+</div>
+		
+<div class="col-md-11">
+	<label class="form-label" for="form.motivo.id_for_label">Motivo: </label>
+		{{form.motivo}}
+</div>
+{%endblock contenido%}
+{%block corte%}</form>{%endblock corte%}

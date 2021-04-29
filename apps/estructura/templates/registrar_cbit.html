@@ -1,0 +1,38 @@
+{%extends "modal_base.html"%}
+{%block title%}SGCBIT|Registrar cbit{%endblock title%}
+{%block validar%}
+{%if plantel%}
+<form role="form" class="row g-2" method="post" action="{{cbit.get_url_update}}">
+{%else%}
+<form role="form" class="row g-2" method="post" action="{%url 'add-cbit'%}">
+{%endif%}
+{%endblock validar%}
+
+{%block titulo%}
+{%if cbit%}ACTUALIZAR CBIT{%else%}REGISTRAR CBIT{%endif%}
+{%endblock titulo%}
+
+{%block contenido%}
+{%csrf_token%}
+<div class="col-md-11">
+<label class="form-label" for="{{form.plantel.id_for_label}}">Plantel: </label>
+	{{form.plantel}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.empleado.id_for_label}}">Tutor a cargo: </label>
+	{{form.empleado}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.internet.id_for_label}}">Internet: </label>
+	{{form.internet}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.nombre.id_for_label}}">Nombre: </label>
+	{{form.nombre}}
+</div>
+
+{%endblock contenido%}
+{%block corte%}</form>{%endblock corte%}

@@ -1,0 +1,86 @@
+{%extends "modal_base.html"%}
+{%block title%}SGCBIT|Registrar asistencia{%endblock title%}
+{%block validar%}
+{%if asistencia%}
+<form role="form" class="row g-2" id="form" action="{{asistencia.get_url_update}}" method="post"> 
+{%else%}
+<form role="form" class="row g-2" id="form" action="{%url 'add-asistencia'%}" method="post"> 
+{%endif%}
+{%endblock validar%}
+
+{%block titulo%}
+{%if asistencia%}ACTUALIZAR ASISTENCIA{%else%}REGISTRAR ASISTENCIA{%endif%}
+{%endblock titulo%}
+
+{%block contenido%}
+{%csrf_token%}
+<div class="col-md-11">
+	{{form.empleado.error}}
+	<label class="form-label" for="{{ form.empleado.id_for_label }}">Empleado: </label>
+	{{form.empleado}}
+</div>
+
+<div class="col-md-11">
+	{% if form.fecha.errors %}
+	<ol>
+		{% for error in form.fecha.errors%}
+		<li>
+			<strong>{{error|escape}}</strong>
+		</li>
+		{% endfor %}
+	</ol>
+	{% endif %}
+	<label class="form-label" for="form.fecha.id_fecha">Fecha: </label>
+	<div class="input-group date" id="fecha" data-target-input="nearest">
+		{{form.fecha}}
+	<div class="input-group-append" data-target="#fecha" data-toggle="datepicker">
+	<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-11">
+	{{form.hora_entrada.error}}
+	<label class="form-label" for="form.hora_entrada.id_for_label">Hora de entrada: </label>
+	<div class="input-group time" id="hora" data-target-input="nearest">
+	{{form.hora_entrada}}
+	<div class="input-group-append" data-target="#hora" data-toggle="clockpicker">
+		<div class="input-group-text"><i class="fa fa-clock"></i></div>
+	</div>
+	</div>
+</div>
+
+<div class="col-md-11">
+	{{form.hora_salida.error}}
+	<label class="form-label" for="form.hora_entrada.id_for_label">Hora de entrada: </label>
+	<div class="input-group time" id="hora" data-target-input="nearest">
+	{{form.hora_salida}}
+	<div class="input-group-append" data-target="#hora" data-toggle="clockpicker">
+		<div class="input-group-text"><i class="fa fa-clock"></i></div>
+	</div>
+	</div>
+</div>
+
+<div class="col-md-11">
+	{{form.observacion.error}}
+	<label class="form-label" for="form.observacion.id_for_label">Observación:</label>
+	{{form.observacion}}
+</div>
+
+<div class="col-md-11">
+	{{form.acividad.error}}
+	<label class="form-label" for="form.actividad.id_for_label">Actividad:</label>
+	{{form.actividad}}
+</div>
+{%endblock contenido%}
+{%block corte%}</form>{%endblock corte%}
+
+<script type="text/javascript">
+$(function(){
+	$('#hora').clockpicker({
+	placement: 'bottom',
+	align: 'left',
+	donetext: 'Aceptar',
+	});
+});
+</script>

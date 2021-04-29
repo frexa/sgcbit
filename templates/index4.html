@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{%block title%}SGCBIT|Principal{%endblock title%}</title>
+    {%include "links.html"%}
+    <script defer src="{%static 'js/solid.js'%}"></script>
+    <script defer src="{%static 'js/fontawesome.js'%}"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+{%if user.is_authenticated %}
+        <nav id="sidebar">
+            {%include "barra_1.html"%}
+        </nav>
+{%else%}{%endif%}
+        <!-- Page Content  -->
+        <div id="content" class="container-fluid">
+{%if user.is_authenticated %}
+            <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+                {%include "barra_2.html"%}
+            </nav>
+            <marquee>
+            Hola bienvenido(a) {{request.user}} al sistema gestor de los centros bolivarianos de informática y telemática (SGCBIT)...Hoy es {{fecha}}</marquee>
+{%else%}{%endif%}
+
+{% include "messages.html"%}
+{%block content%}
+
+            <h2>Quienes somos</h2>
+            <!---Carrusel--->
+            <div id="carrusel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <!---indicadores--->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carrusel" data-bs-slide-to="0" class="active bg-dark" aria-current="true" aria-label="img 1"></button>
+                <button type="button" data-bs-target="#carrusel" data-bs-slide-to="1" aria-label="img 2" class="bg-dark"></button>
+                <button type="button" data-bs-target="#carrusel" data-bs-slide-to="2" aria-label="img 3" class="bg-dark"></button>
+                <button type="button" data-bs-target="#carrusel" data-bs-slide-to="3" aria-label="img 4" class="bg-dark"></button>
+                <button type="button" data-bs-target="#carrusel" data-bs-slide-to="4" aria-label="img 5" class="bg-dark"></button>
+                <button type="button" data-bs-target="#carrusel" data-bs-slide-to="5" aria-label="img 6" class="bg-dark"></button>
+                <button type="button" data-bs-target="#carrusel" data-bs-slide-to="6" aria-label="img 7" class="bg-dark"></button>
+            </div>
+    
+            <div class="carousel-inner">
+                <div class="carousel-item active"><img src="{%static 'carrusel/img1.png'%}" width="400px" height="400px" class="d-block w-100">
+            </div>
+        
+            <div class="carousel-item"><img src="{%static 'carrusel/img2.png'%}" width="400px" height="400px" class="d-block w-100">
+            </div>
+        
+    <div class="carousel-item"><img src="{%static 'carrusel/img3.png'%}" width="400px" height="400px" class="d-block w-100">
+    </div>
+
+    <div class="carousel-item"><img src="{%static 'carrusel/img4.png'%}" width="400px" height="400px" class="d-block w-100">
+    </div>
+
+    <div class="carousel-item"><img src="{%static 'carrusel/img5.png'%}" width="400px" height="400px" class="d-block w-100">
+    </div>
+
+    <div class="carousel-item"><img src="{%static 'carrusel/img6.png'%}" width="400px" height="400px" class="d-block w-100">
+    </div>
+    
+    <div class="carousel-item"><img src="{%static 'carrusel/img7.png'%}" width="400px" height="400px" class="d-block w-100">
+    </div>
+
+    </div>
+    <!---controles--->
+    <button type="button" class="carousel-control-prev" data-bs-target="#carrusel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button type="button" class="carousel-control-next" data-bs-target="#carrusel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
+        <div class="line"></div>
+    </div>
+{%include "paginator.html"%}
+{%endblock content%}
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>
+<script type="text/javascript">
+    $('#carrusel').carousel({
+        interval:6000,
+        pause:false,
+        wrap:true
+    });
+</script>
+<script type="text/javascript">
+setTimeout(function() {
+    if ($('#msg').length>0)
+        {
+            $('#msg').remove();
+        }
+    },2000)
+</script>
+<script>
+function abrir_modal(url){
+    $('#modal').load(url,function(){
+        $(this).modal({
+            backdrop:'static',
+            keyboard:false
+        })
+        $(this).modal('show');
+    });
+    return false;
+}
+
+function cerrar_modal(){
+    $('#modal').modal('hide');
+    return false;
+}
+</script>
+<script type="text/javascript">
+    window.onload = function () {
+        var contenedor = document.getElementById('carga_container');
+        contenedor.style.visibility = 'hedden';
+        contenedor.style.opacity = '0';
+    }
+</script>
+
+<div class="modal modal-fade" aria-labelledby="TitleModal" id="modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
+
+</body>
+</html>

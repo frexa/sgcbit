@@ -1,0 +1,42 @@
+{%load static%}
+<!---Cabecera del menu--->
+<div class="sidebar-header">
+	<h3>SGCBIT</h3>
+	<strong>SGC</strong>
+</div>
+<ul class="list-unstyled components">
+<!---Item 1--->
+<li class="active">
+<a href="{%url 'index'%}">
+	<img src="{%static 'images/logotipo_.png'%}" title="Principal" width="50px" height="20px">Inicio</a>
+</li>
+<!---Item 2--->
+<li>
+<a href="{%url 'list-user'%}">
+		<img src="{%static 'images/group.png'%}" width="25px" height="25px" title="Usuarios">Usuarios</a>
+</li>
+<!---Item 3--->
+<li>
+	<a href="{%url 'list-empleado'%}"><img src="{%static 'images/Administrativo.png'%}" title="Administrativo" width="30px" height="20px">Administrativo <span class="badge rounded-pill bg-dark">{{empleados}}</span></a>
+</li>
+<!---Item 4--->
+<li>
+<a href="#submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+	<img src="{%static 'images/Plantel_arquitectura.png'%}" width="37px" height="20px">Caracterización
+</a>
+<!---Sub menu desplegable--->	
+<ul class="collapse list-unstyled" id="submenu">
+	<li><a href="">Internet</a></li>
+	<li><hr class="dropdown-divider"></li>
+	<li><a href="{%url 'list-cbit'%}">Cbit <span class="badge rounded-pill bg-dark">{{cbit}}</span></a></li>
+	<li><hr class="dropdown-divider"></li>
+	<li><a href="{%url 'list-plantel'%}">Plantel <span class="badge rounded-pill bg-dark">{{planteles}}</span></a></li>
+	<li><hr class="dropdown-divider"></li>
+	<li><a href="{%url 'list-direccion'%}">Dirección <span class="badge rounded-pill bg-dark">{{direccion}}</span></a></li>
+</ul>
+</li>
+<!---Item 5--->
+<li>
+	<a href="{%url 'logout'%}?next={{request.path}}"><img class="img" src="{%static 'images/logout.png'%}" title="Salir" width="26px" height="20px">Salir</a>
+</li>
+</ul>

@@ -1,0 +1,41 @@
+{%extends "base_generic.html"%}
+{%load static%}
+{%block content%}
+{%if plantel%}
+<h2 style="text-align: center;">Detalles del Plantel</h2><br>
+		<table width="100%" class="table table-striped table-bordered  table-hover table-responsive">
+			<thead>
+				<tr>
+					<th>Nombre del circuito</th>
+					<th>Director</th>
+					<th>Código DEA</th>
+					<th>Nivel academico</th>
+					<th class="all">Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{plantel.nombre_circuito}}</td>
+					<td>{{plantel.empleado}}</td>
+					<td>{{plantel.codigo_DEA}}</td>
+					<td>{{plantel.nivel_academico}}</td>
+					<td>
+
+<a class="btn btn-warning btn-sm" href="{% url 'add-plantel'%}"><img src="{%static 'images/documento.png'%}" width="40" height="30" title="Agregar" class="img"></a>
+					
+<a class="btn btn-primary btn-sm" href="{{plantel.get_url_update}}"><img src="{%static 'images/lapiz.png'%}" width="40" height="30" title="Modificar" class="img"></a>
+
+					
+<a class="btn btn-danger btn-sm" href="{{plantel.get_url_delete}}" role="button"><img src="{%static 'images/eliminar.png'%}" width="40" height="30" title="Eliminar" class="img"></a>
+					
+<a class="btn btn-info btn-sm" href="{%url 'list-plantel'%}"><img src="{%static 'images/lista.png'%}" width="40" height="30" title="Lista" class="img"></a>
+
+					</td>
+				</tr>
+			</tbody>
+		</table>
+{%else%}
+	<p class="col bg-warning">No se ha registrado ningun plantel aun</p>
+	<p><a href="{%url 'add-plantel'%}" class="link">Has Click Aquí para agregar uno</a></p>
+{%endif%}
+{%endblock%}

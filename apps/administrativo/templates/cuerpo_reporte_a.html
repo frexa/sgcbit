@@ -1,0 +1,62 @@
+<p>
+<div class="offset-1 col-11">
+<p><h6>Asistencias</h6></p>
+<table class="table table-striped table-hover table-responsive" style="text-align: center;">
+<thead>
+	<tr>
+		<th>Fecha</th>
+		<th>Día</th>
+		<th>Hora de entrada</th>
+		<th>Hora de salida</th>
+		<th>Actividad</th>
+		<th>Firma</th>
+		<th>Observaciones</th>
+	</tr>
+</thead>
+		<tbody>
+			{%for asistencias in page_obj%}
+
+			<tr>
+				<td>{{asistencias.fecha|date:'d-m-y'}}</td>
+				<td>{{asistencias.dia}}</td>
+				<td>{{asistencias.hora_entrada}} AM</td>
+				<td>{{asistencias.hora_salida}} PM</td>
+				<td>{{asistencias.actividad}}</td>
+				<td>_______________________________________</td>
+				<td>{%if asistencias.observacion%}{{asistencias.observacion}}{%else%}NINGUNA{%endif%}</td>
+			</tr>
+			{%empty%}
+			<li class="col bg-warning">¡No se encontro ningun registro!</li>
+ 			{%endfor%}
+		</tbody>
+</table>
+
+
+<p>
+<p><h6>Inasistencias</h6></p>
+<table class="table table-striped table-hover table-responsive" style="text-align: center;">
+<thead>
+	<tr>
+		<th>Fecha</th>
+		<th>Día</th>
+		<th>Motivo</th>
+		<th>Justificativo</th>
+	</tr>
+</thead>
+		<tbody>
+			{%for inasistencias in inasistencia%}
+
+			<tr>
+				<td>{{inasistencias.fecha|date:'d-m-y'}}</td>
+				<td>{{inasistencias.dia}}</td>
+				<td>{{inasistencias.motivo}}</td>
+				<td>{{inasistencias.justificativo}}</td>
+			</tr>
+			{%empty%}
+			<li class="col bg-warning">¡No se encontro ningun registro!</li>
+ 			{%endfor%}
+		</tbody>
+</table>
+</p>
+
+</div></p>

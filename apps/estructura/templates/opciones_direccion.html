@@ -1,0 +1,15 @@
+{%load static%}
+<div class="dropdown">
+	<button class="btn btn-outline-info dropdown-toggle" type="button" id="menu" data-toggle="dropdown" aria-expanded="false">
+		Opciones
+	</button>
+
+<div class="dropdown-menu" aria-labelledby="menu">
+
+<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+	<a class="btn btn-warning btn-sm" href="{% url 'add-direccion'%}"><img src="{%static 'images/documento.png'%}" width="40" height="30" title="Agregar" class="img"></a>
+					
+	<a class="btn btn-primary btn-sm" href="{{direcciones.get_absolute_url}}"><img src="{%static 'images/lapiz.png'%}" width="40" height="30" title="Modificar" class="img"></a>
+</div>
+</div>
+</div>

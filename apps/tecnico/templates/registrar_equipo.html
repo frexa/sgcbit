@@ -1,0 +1,72 @@
+{%extends "modal_base.html"%}
+{%block title%}SGCBIT|Registrar equipos{%endblock title%}
+{%block validar%}
+{%if plantel%}
+<form role="form" class="row g-2" method="post" action="{{equipo.get_url_update}}">
+{%else%}
+<form role="form" class="row g-2" method="post" action="{%url 'add-equipo'%}">
+{%endif%}
+{%endblock validar%}
+
+{%block titulo%}
+{%if equipo%}ACTUALIZAR EQUIPO{%else%}REGISTRAR EQUIPO{%endif%}
+{%endblock titulo%}
+
+{%block contenido%}
+{%csrf_token%}
+<div class="col-md-11">
+<label class="form-label" for="{{form.cbit.id_for_label}}">CBIT: </label>
+	{{form.cbit}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.serial.id_for_label}}">Serial: </label>
+	{{form.serial}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.modelo.id_for_label}}">Modelo: </label>
+	{{form.modelo}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.descripcion.id_for_label}}">Descripción: </label>
+	{{form.descripcion}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.observacion.id_for_label}}">Observación: </label>
+	{{form.observacion}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.tipo_de_bien.id_for_label}}">Tipo de bien: </label>
+	{{form.tipo_de_bien}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.fundacion.id_for_label}}">Fundación: </label>
+	{{form.fundacion}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.marca.id_for_label}}">Marca: </label>
+	{{form.marca}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.estado_uso.id_for_label}}">Estado de uso: </label>
+	{{form.estado_uso}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.estado_fisico.id_for_label}}">Estado fisico: </label>
+	{{form.estado_fisico}}
+</div>
+
+<div class="col-md-11">
+<label class="form-label" for="{{form.tipo_equipo.id_for_label}}">Tipo de equipo: </label>
+	{{form.tipo_equipo}}
+</div>
+{%endblock contenido%}
+{%block corte%}</form>{%endblock corte%}

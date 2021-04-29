@@ -1,0 +1,40 @@
+{% extends "index4.html" %}
+{%block title%}SGCBIT|Inicio{%endblock title%}
+{% block content %}
+	{%if form.errors%}
+		<p>Usuario/Contraseña incorrectos, Intentelo nuevamente</p>
+	{%endif%}
+
+	{%if next%}
+
+		{%if user.is_authenticated%}
+		
+		<p>Your account doesn't have access to this page. To proceed,
+    	please login with an account that has access.</p>
+    	{%else%}
+    	
+    	<p>¡Por favor inicie sesion para poder continuar!</p>
+    	
+    	{%endif%}
+    {%endif%}
+<div class="col offset-md-4 col-md-4 offset-md-4" >
+	<div class="col col-md-auto bg-info" style="text-align: center;border-radius: 0.6em;">
+		<h3>Inicio de seción</h3></div>
+    <form method="post" action="{% url 'login' %}">
+	{% csrf_token %}
+	<div>
+		<label for="username">Usuario: </label><input class="form-control" type="text" name="username">
+  	</div>
+	<div>
+		<label for="password">Contraseña:</label><input class="form-control" type="password" name="password" id="contraseña" required="campo obligatorio">
+	</div>
+
+	<div>
+		<br>
+  		<input class="form-control bg-info" type="submit" value="Entrar">
+  		<input class="form-control" type="hidden" name="next" value="{{ next }}" />
+	</div>
+	</form>
+	<p><a href="{% url 'password_reset' %}">Cambiar contraseña?</a></p>
+</div>
+{% endblock %}
