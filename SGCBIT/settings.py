@@ -1,4 +1,5 @@
 from pathlib import Path
+import dj_database_url
 import os
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -7,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'xa5)^f^-=7p!456y8&&0sb+i6a2&enhy7-=t#q7t&b$&@q&x^='
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -100,8 +101,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+db_from_env = dj_database_url.config(conn_max_age=500)
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+DATABASES['default'].update(db_from_env)
+
 
 STATIC_URL = '/static/'
 
@@ -113,11 +116,10 @@ STATIC_ROOT = os.path.join ('staticfiles')
 
 MEDIA_ROOT = os.path.join ('media')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = 'index'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #DEBUG_PROPAGATE_EXCEPTIONS = True
 
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
-
-
