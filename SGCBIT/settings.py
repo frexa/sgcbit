@@ -56,16 +56,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SGCBIT.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':'sgcbit',
-        'USER':'postgres',
-        'PASSWORD':'4b28e5',
-        'HOST':'localhost',
-        'PORT':'5432',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME':'sgcbit',
+#        'USER':'postgres',
+#        'PASSWORD':'4b28e5',
+#        'HOST':'localhost',
+ #       'PORT':'5432',
+ #   }
+#}
 
 
 AUTH_PASSWORD_VALIDATORS = [
