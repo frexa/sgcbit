@@ -1,1 +1,1 @@
-web: gunicorn SGCBIT.wsgi
+web: gunicorn SGCBIT.wsgi --log-file -

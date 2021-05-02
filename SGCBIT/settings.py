@@ -1,5 +1,6 @@
 from pathlib import Path
 import dj_database_url
+from decouple import config
 import os
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -10,7 +11,7 @@ SECRET_KEY = 'xa5)^f^-=7p!456y8&&0sb+i6a2&enhy7-=t#q7t&b$&@q&x^='
 
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -56,16 +57,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SGCBIT.wsgi.application'
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME':'sgcbit',
-#        'USER':'postgres',
-#        'PASSWORD':'4b28e5',
-#        'HOST':'localhost',
- #       'PORT':'5432',
- #   }
-#}
+DATABASES = {
+    'default': dj_database_url.config(
+        default= config('DATABASE_URL')
+        )
+
+}
+
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -101,9 +99,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-
-DATABASES['default'].update(db_from_env)
 
 
 STATIC_URL = '/static/'
