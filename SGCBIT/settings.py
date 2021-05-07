@@ -1,6 +1,6 @@
 from pathlib import Path
 import dj_database_url
-from decouple import config
+#from decouple import config
 import os
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'xa5)^f^-=7p!456y8&&0sb+i6a2&enhy7-=t#q7t&b$&@q&x^='
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -27,7 +27,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+ #   'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -57,11 +57,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SGCBIT.wsgi.application'
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default= config('DATABASE_URL')
-        )
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default=config('DATABASE_URL')
+#        )
 
+#}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sgcbit',
+        'USER': 'postgre',
+        'PASSWORD': '4b28e5',
+        'HOST': 'localhost',
+        'PORT': 5432,
+    }
 }
 
 
@@ -111,7 +122,7 @@ STATIC_ROOT = os.path.join ('staticfiles')
 
 MEDIA_ROOT = os.path.join ('media')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = 'index'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
