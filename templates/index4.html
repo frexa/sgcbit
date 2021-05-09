@@ -82,63 +82,13 @@
     </div>
 {%include "paginator.html"%}
 {%endblock content%}
-<footer class="main-footer bg-light">
-    <strong>Copyright &copy; 2020-2021 <a href="https://fundabit.ve/">FundaBit</a> -
-        Todos los derechos reservados. </strong>
-    <div class="float-right d-none d-sm-inline-block">
-        <b>Versión</b> v3.0.1
-    </div>
-</footer>
-{%include "scrips.html"%}
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-    });
-</script>
-<script type="text/javascript">
-    $('#carrusel').carousel({
-        interval:6000,
-        pause:false,
-        wrap:true
-    });
-</script>
-<script type="text/javascript">
-setTimeout(function() {
-    if ($('#msg').length>0)
-        {
-            $('#msg').remove();
-        }
-    },2000)
-</script>
-<script>
-function abrir_modal(url){
-    $('#modal').load(url,function(){
-        $(this).modal({
-            backdrop:'static',
-            keyboard:false
-        })
-        $(this).modal('show');
-    });
-    return false;
-}
-
-function cerrar_modal(){
-    $('#modal').modal('hide');
-    return false;
-}
-</script>
-<script type="text/javascript">
-    window.onload = function () {
-        var contenedor = document.getElementById('carga_container');
-        contenedor.style.visibility = 'hedden';
-        contenedor.style.opacity = '0';
-    }
-</script>
-
+{%block footer%}
+{%include "footer.html"%}
+{%endblock footer%}
 <div class="modal modal-fade" aria-labelledby="TitleModal" id="modal" tabindex="-1" role="dialog" aria-hidden="true"></div>
-
 </body>
+{%include "scrips.html"%}
+<script src="{%static 'js/js_person.js'%}"></script>
+
 </html>
